@@ -1,5 +1,7 @@
 *.class
 *.bmp
+*.db
+*.sql
 build/
 .gradle
 .idea
