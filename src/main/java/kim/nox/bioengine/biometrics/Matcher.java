@@ -5,6 +5,7 @@ import com.machinezoo.sourceafis.FingerprintTemplate;
 import io.ebean.Ebean;
 import kim.nox.bioengine.Singleton;
 import kim.nox.bioengine.io.Utils;
+import kim.nox.bioengine.logs.ActivityLogger;
 import kim.nox.bioengine.models.Fingerprint;
 import kim.nox.bioengine.models.Staff;
 
@@ -34,11 +35,14 @@ public class Matcher {
 
             for(Fingerprint fingerprint : staff.getFingerprints()) {
                 if(match(fingerprint) == BioResult.MATCH_SUCCESSFUL) {
+                    ActivityLogger.logMatchSuccesful(document, fingerprint.getPosition());
                     return BioResult.MATCH_SUCCESSFUL;
                 }
             }
+            ActivityLogger.logMatchFailed(document);
             return BioResult.MATCH_FAILED;
         } else {
+            ActivityLogger.logUserNotFound(document);
             return BioResult.STAFF_NOT_FOUND;
         }
     }

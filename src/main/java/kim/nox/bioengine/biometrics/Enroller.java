@@ -42,7 +42,7 @@ public class Enroller {
                 this.position
             );
             this.singleton.server.save(fingerprint);
-            ActivityLogger.LogFingerprintCreated(this.staff.getDocument(), fingerprint.getId(), fingerprint.getPosition());
+            ActivityLogger.logFingerprintCreated(this.staff.getDocument(), fingerprint.getId(), fingerprint.getPosition());
         } catch (IOException e) {
             return BioResult.UNABLE_TO_LOAD_IMAGE;
         }
@@ -70,7 +70,7 @@ public class Enroller {
         if(staff == null) {
             staff = new Staff(document);
             this.singleton.server.save(staff);
-            ActivityLogger.LogStaffCreated(document, staff.getId());
+            ActivityLogger.logStaffCreated(document, staff.getId());
         }
 
         return staff;
