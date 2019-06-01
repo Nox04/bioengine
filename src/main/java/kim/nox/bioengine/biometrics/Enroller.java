@@ -13,14 +13,16 @@ import java.io.IOException;
 public class Enroller {
     private String document;
     private String imagePath;
+    private String position;
     private Staff staff;
     private Singleton singleton;
 
-    public Enroller(String document, String imagePath) {
+    public Enroller(String document, String imagePath, String position) {
         this.singleton = Singleton.getInstance();
         this.document = document;
         this.imagePath = imagePath;
-        this.staff = findOrCreateStaff(document);
+        this.position = position;
+        this.staff = findOrCreateStaff();
     }
 
     public BioResult enrollImageToDatabase() {
@@ -36,10 +38,11 @@ public class Enroller {
             FingerprintTemplate fingerprintTemplate = Extractor.extractTemplate(this.imagePath);
             Fingerprint fingerprint = new Fingerprint(
                 Utils.encodeStringToBase64(fingerprintTemplate.serialize()),
-                this.staff
+                this.staff,
+                this.position
             );
             this.singleton.server.save(fingerprint);
-            ActivityLogger.LogFingerprintCreated(this.staff.getDocument(), fingerprint.getId());
+            ActivityLogger.LogFingerprintCreated(this.staff.getDocument(), fingerprint.getId(), fingerprint.getPosition());
         } catch (IOException e) {
             return BioResult.UNABLE_TO_LOAD_IMAGE;
         }
@@ -57,7 +60,7 @@ public class Enroller {
         return BioResult.ENROLLMENT_SUCCESSFUL;
     }
 
-    private Staff findOrCreateStaff(String document) {
+    private Staff findOrCreateStaff() {
         Staff staff = Ebean.find(Staff.class)
                 .select("document")
                 .where()

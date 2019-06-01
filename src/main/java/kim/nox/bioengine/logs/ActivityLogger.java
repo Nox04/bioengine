@@ -1,6 +1,7 @@
 package kim.nox.bioengine.logs;
 
 import kim.nox.bioengine.Singleton;
+import kim.nox.bioengine.biometrics.Finger;
 import kim.nox.bioengine.models.Activity;
 
 public class ActivityLogger {
@@ -11,9 +12,14 @@ public class ActivityLogger {
         singleton.server.save(new Activity(document, description));
     }
 
-    public static void LogFingerprintCreated(String document, Long id) {
+    public static void LogFingerprintCreated(String document, Long id, String position) {
         Singleton singleton = Singleton.getInstance();
-        String description = String.format("Huella creada con el id %s añadida al personal con documento %s", id, document);
+        String description = String.format(
+                "Huella del %s creada con el id %s añadida al personal con documento %s",
+                Finger.getEnumByString(position),
+                id,
+                document
+        );
         singleton.server.save(new Activity(document, description));
     }
 }

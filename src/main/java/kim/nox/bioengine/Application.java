@@ -26,12 +26,15 @@ class Application {
         BioResult result;
 
         if(mainRequest.getCommand().equals("enroll")) {
-            Enroller enroller = new Enroller(mainRequest.getDocument(), mainRequest.getFingerprintPath());
+            Enroller enroller = new Enroller(mainRequest.getDocument(), mainRequest.getFingerprintPath(), mainRequest.getPosition());
             result =  enroller.enrollBioTemplateToDatabase();
+            System.out.println(result);
         } else if (mainRequest.getCommand().equals("match")) {
             Matcher matcher = new Matcher();
             result = matcher.matchAgainstDatabase(mainRequest.getDocument(), mainRequest.getFingerprintPath());
             System.out.println(result + " " + matcher.getScore());
+        } else {
+            System.out.println("Command not found");
         }
     }
 }

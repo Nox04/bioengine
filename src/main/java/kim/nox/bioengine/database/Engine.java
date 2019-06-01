@@ -19,6 +19,8 @@ public class Engine {
         dataSourceConfig.setIsolationLevel(Connection.TRANSACTION_SERIALIZABLE);
 
         ServerConfig config = new ServerConfig();
+        config.setDdlGenerate(true);
+        config.setDdlRun(true);
         config.setDefaultServer(true);
         config.setDataSourceConfig(dataSourceConfig);
 
