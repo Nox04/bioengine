@@ -1,7 +1,9 @@
 package kim.nox.bioengine.biometrics;
 
 public enum BioResult {
-    OK,
+    ENROLLMENT_SUCCESSFUL,
     UNABLE_TO_LOAD_IMAGE,
-    ERROR
+    MATCH_SUCCESSFUL,
+    MATCH_FAILED,
+    STAFF_NOT_FOUND
 }

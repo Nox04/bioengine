@@ -24,11 +24,11 @@ public class Enroller {
     }
 
     public BioResult enrollImageToDatabase() {
-        return BioResult.OK;
+        return BioResult.ENROLLMENT_SUCCESSFUL;
     }
 
     public BioResult enrollImageToFile() {
-        return BioResult.OK;
+        return BioResult.ENROLLMENT_SUCCESSFUL;
     }
 
     public BioResult enrollBioTemplateToDatabase() {
@@ -43,18 +43,18 @@ public class Enroller {
         } catch (IOException e) {
             return BioResult.UNABLE_TO_LOAD_IMAGE;
         }
-        return BioResult.OK;
+        return BioResult.ENROLLMENT_SUCCESSFUL;
     }
 
     public BioResult enrollBioTemplateToFile() {
-        return BioResult.OK;
+        return BioResult.ENROLLMENT_SUCCESSFUL;
     }
 
     public BioResult enrollISOTemplateToDatabase() {
-        return BioResult.OK;
+        return BioResult.ENROLLMENT_SUCCESSFUL;
     }
     public BioResult enrollISOTemplateToFile() {
-        return BioResult.OK;
+        return BioResult.ENROLLMENT_SUCCESSFUL;
     }
 
     private Staff findOrCreateStaff(String document) {
