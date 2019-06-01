@@ -17,4 +17,13 @@ public class Utils {
         byte[] imageByteArray = Base64.getDecoder().decode(base64Str);
         FileUtils.writeByteArrayToFile(new File(pathFile), imageByteArray);
     }
+
+    public static String encodeStringToBase64(String stream) {
+        return Base64.getEncoder().encodeToString(stream.getBytes());
+    }
+
+    public static String decodeBase64ToString(String base64Str) {
+        byte[] imageByteArray = Base64.getDecoder().decode(base64Str);
+        return new String(imageByteArray);
+    }
 }

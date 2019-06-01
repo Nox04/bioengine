@@ -21,6 +21,7 @@ public class Engine {
         ServerConfig config = new ServerConfig();
         config.setDdlGenerate(true);
         config.setDdlRun(true);
+        config.setDefaultServer(true);
         config.setDataSourceConfig(dataSourceConfig);
 
         return EbeanServerFactory.create(config);

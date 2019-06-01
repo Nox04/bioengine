@@ -10,8 +10,8 @@ public class Matcher {
     private FingerprintTemplate candidateTemplate;
 
     public Matcher(String probe, String candidate) {
-        probeTemplate = Extractor.extractTemplate(probe);
-        candidateTemplate = Extractor.extractTemplate(candidate);
+        //probeTemplate = Extractor.extractTemplate(probe);
+        //candidateTemplate = Extractor.extractTemplate(candidate);
     }
 
     public double match() {

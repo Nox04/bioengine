@@ -8,15 +8,16 @@ import javax.persistence.Table;
 @Table(name = "biometric_fingerprints")
 public class Fingerprint extends Base {
 
-    public Fingerprint(String template) {
+    public Fingerprint(String template, Staff staff) {
         super();
         this.template = template;
+        this.staff = staff;
     }
 
     private String template;
 
     @ManyToOne(optional=false)
-    Staff staff;
+    private Staff staff;
 
     public String getTemplate() {
         return template;
