@@ -6,6 +6,11 @@ import kim.nox.bioengine.models.Activity;
 
 public class ActivityLogger {
 
+  /**
+   * Log staff created biometric activity.
+   * @param document Document of staff.
+   * @param id Id of staff.
+   */
   public static void logStaffCreated(String document, Long id) {
     Singleton singleton = Singleton.getInstance();
     String description = String.format(
@@ -13,17 +18,27 @@ public class ActivityLogger {
     singleton.server.save(new Activity(document, description));
   }
 
+  /**
+   * Log fingerprint created biometric activity.
+   * @param document Document of staff.
+   * @param id Id of fingerprint.
+   * @param position Fingerprint position.
+   */
   public static void logFingerprintCreated(String document, Long id, String position) {
     Singleton singleton = Singleton.getInstance();
     String description = String.format(
             "Huella del %s creada con el id %s añadida a personal con documento %s",
-            Finger.getEnumByString(position),
+            Finger.getFingerByPosition(position),
             id,
             document
     );
     singleton.server.save(new Activity(document, description));
   }
 
+  /**
+   * Log user not found biometric activity.
+   * @param document Document of staff.
+   */
   public static void logUserNotFound(String document) {
     Singleton singleton = Singleton.getInstance();
     String description = String.format(
@@ -33,6 +48,10 @@ public class ActivityLogger {
     singleton.server.save(new Activity(document, description));
   }
 
+  /**
+   * Log match failed biometric activity.
+   * @param document Document of staff.
+   */
   public static void logMatchFailed(String document) {
     Singleton singleton = Singleton.getInstance();
     String description = String.format(
@@ -42,12 +61,17 @@ public class ActivityLogger {
     singleton.server.save(new Activity(document, description));
   }
 
+  /**
+   * Log match sucessful biometric activity.
+   * @param document Document of staff.
+   * @param position Position of the finger matched.
+   */
   public static void logMatchSuccesful(String document, String position) {
     Singleton singleton = Singleton.getInstance();
     String description = String.format(
             "Verificación exitosa de personal con documento %s usando el dedo %s",
             document,
-            Finger.getEnumByString(position)
+            Finger.getFingerByPosition(position)
     );
     singleton.server.save(new Activity(document, description));
   }

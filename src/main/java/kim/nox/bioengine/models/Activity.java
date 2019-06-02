@@ -7,6 +7,11 @@ import javax.persistence.Table;
 @Table(name = "biometric_log")
 public class Activity  extends Base {
 
+  /**
+   * Activity Model.
+   * @param causerDocument Document related to biometric activity.
+   * @param description Description of the biometric activity.
+   */
   public Activity(String causerDocument, String description) {
     super();
     this.causerDocument = causerDocument;

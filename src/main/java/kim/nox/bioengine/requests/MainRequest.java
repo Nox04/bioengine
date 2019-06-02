@@ -45,10 +45,10 @@ public class MainRequest {
 
   private void parseArgs(String[] args) throws IllegalArgumentException {
     if (args.length < 3) {
-      throw new IllegalArgumentException("Invalid arguments count");
+      throw new IllegalArgumentException(Response.INVALID_ARGUMENTS_COUNT.name());
     } else if (args.length == 3) {
       if (args[0].equals("enroll")) {
-        throw new IllegalArgumentException("Enroll requires 4 arguments");
+        throw new IllegalArgumentException(Response.FOUR_PARAMS_ENROLL.name());
       }
       this.command = args[0];
       this.document = args[1];

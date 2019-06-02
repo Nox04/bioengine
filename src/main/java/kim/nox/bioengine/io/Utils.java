@@ -1,10 +1,9 @@
 package kim.nox.bioengine.io;
 
-import org.apache.commons.io.FileUtils;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.Base64;
+import org.apache.commons.io.FileUtils;
 
 public class Utils {
 

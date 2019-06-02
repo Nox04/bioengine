@@ -3,10 +3,10 @@ package kim.nox.bioengine.models;
 import io.ebean.annotation.WhenCreated;
 import io.ebean.annotation.WhenModified;
 
+import java.time.Instant;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Version;
-import java.time.Instant;
 
 @MappedSuperclass
 public abstract class Base {

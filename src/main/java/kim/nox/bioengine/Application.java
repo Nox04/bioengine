@@ -39,9 +39,9 @@ class Application {
               mainRequest.getDocument(),
               mainRequest.getFingerprintPath()
       );
-      System.out.println(result + " " + matcher.getScore());
+      System.out.println(result);
     } else {
-      System.out.println("Command not found");
+      System.out.println(BioResult.COMMAND_NOT_FOUND);
     }
   }
 }

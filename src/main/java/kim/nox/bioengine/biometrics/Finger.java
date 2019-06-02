@@ -25,7 +25,12 @@ public enum Finger {
     return value;
   }
 
-  public static String getEnumByString(String key) {
+  /**
+   * Get fingerprint by position.
+   * @param key Fingerprint position.
+   * @return Fingerprint name.
+   */
+  public static String getFingerByPosition(String key) {
     for (Finger finger : Finger.values()) {
       if (key.equals(finger.key)) {
         return finger.value;

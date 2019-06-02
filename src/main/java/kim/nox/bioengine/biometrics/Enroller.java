@@ -2,13 +2,12 @@ package kim.nox.bioengine.biometrics;
 
 import com.machinezoo.sourceafis.FingerprintTemplate;
 import io.ebean.Ebean;
+import java.io.IOException;
 import kim.nox.bioengine.Singleton;
 import kim.nox.bioengine.io.Utils;
 import kim.nox.bioengine.logs.ActivityLogger;
 import kim.nox.bioengine.models.Fingerprint;
 import kim.nox.bioengine.models.Staff;
-
-import java.io.IOException;
 
 public class Enroller {
   private String document;
@@ -17,6 +16,12 @@ public class Enroller {
   private Staff staff;
   private Singleton singleton;
 
+  /**
+   * Enroller constructor.
+   * @param document Staff's document.
+   * @param imagePath Path of the fingerprint image.
+   * @param position Position of the fingerprint.
+   */
   public Enroller(String document, String imagePath, String position) {
     this.singleton = Singleton.getInstance();
     this.document = document;
@@ -25,14 +30,10 @@ public class Enroller {
     this.staff = findOrCreateStaff();
   }
 
-  public BioResult enrollImageToDatabase() {
-    return BioResult.ENROLLMENT_SUCCESSFUL;
-  }
-
-  public BioResult enrollImageToFile() {
-    return BioResult.ENROLLMENT_SUCCESSFUL;
-  }
-
+  /**
+   * Enroll biometric template to database.
+   * @return Result of the enrollment.
+   */
   public BioResult enrollBioTemplateToDatabase() {
     try {
       FingerprintTemplate fingerprintTemplate = Extractor.extractTemplate(this.imagePath);
@@ -50,18 +51,6 @@ public class Enroller {
     } catch (IOException e) {
       return BioResult.UNABLE_TO_LOAD_IMAGE;
     }
-    return BioResult.ENROLLMENT_SUCCESSFUL;
-  }
-
-  public BioResult enrollBioTemplateToFile() {
-    return BioResult.ENROLLMENT_SUCCESSFUL;
-  }
-
-  public BioResult enrollISOTemplateToDatabase() {
-    return BioResult.ENROLLMENT_SUCCESSFUL;
-  }
-
-  public BioResult enrollISOTemplateToFile() {
     return BioResult.ENROLLMENT_SUCCESSFUL;
   }
 

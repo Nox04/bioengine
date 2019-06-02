@@ -9,10 +9,8 @@ public class Singleton {
   // variable of type String
   public EbeanServer server;
 
-
   // private constructor restricted to this class itself
   private Singleton() {}
-
 
   /**
    * Static method to create instance of Singleton class.

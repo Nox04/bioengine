@@ -9,8 +9,11 @@ import java.sql.Connection;
 
 public class Engine {
 
+  /**
+   * Start database engine.
+   * @return EbeanServer created.
+   */
   public EbeanServer start() {
-
     DataSourceConfig dataSourceConfig = new DataSourceConfig();
     dataSourceConfig.setDriver("org.sqlite.JDBC");
     dataSourceConfig.setUrl("jdbc:sqlite:data.db");

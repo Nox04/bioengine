@@ -8,6 +8,12 @@ import javax.persistence.Table;
 @Table(name = "biometric_fingerprints")
 public class Fingerprint extends Base {
 
+  /**
+   * Fingerprint model.
+   * @param template Base64 serialized fingerprint template.
+   * @param staff Staff related to the fingerprint.
+   * @param position Position of the fingerprint.
+   */
   public Fingerprint(String template, Staff staff, String position) {
     super();
     this.template = template;

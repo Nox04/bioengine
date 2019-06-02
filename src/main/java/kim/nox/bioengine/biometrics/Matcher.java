@@ -3,25 +3,22 @@ package kim.nox.bioengine.biometrics;
 import com.machinezoo.sourceafis.FingerprintMatcher;
 import com.machinezoo.sourceafis.FingerprintTemplate;
 import io.ebean.Ebean;
-import kim.nox.bioengine.Singleton;
+import java.io.IOException;
 import kim.nox.bioengine.io.Utils;
 import kim.nox.bioengine.logs.ActivityLogger;
 import kim.nox.bioengine.models.Fingerprint;
 import kim.nox.bioengine.models.Staff;
 
-import java.io.IOException;
-
 public class Matcher {
 
-  private double score = 0.0;
   private FingerprintTemplate probeTemplate;
-  private FingerprintTemplate candidateTemplate;
-  private Singleton singleton;
 
-  public Matcher() {
-    this.singleton = Singleton.getInstance();
-  }
-
+  /**
+   * Match a fingerprint against database.
+   * @param document Document of the staff.
+   * @param imagePath Path of the fingerprint matched.
+   * @return Result of the match.
+   */
   public BioResult matchAgainstDatabase(String document, String imagePath) {
     try {
       probeTemplate = Extractor.extractTemplate(imagePath);
@@ -48,14 +45,10 @@ public class Matcher {
   }
 
   private BioResult match(Fingerprint fingerprint) {
-    candidateTemplate = new FingerprintTemplate()
+    FingerprintTemplate candidateTemplate = new FingerprintTemplate()
             .dpi(500.0)
             .deserialize(Utils.decodeBase64ToString(fingerprint.getTemplate()));
-    score = new FingerprintMatcher().index(probeTemplate).match(candidateTemplate);
+    double score = new FingerprintMatcher().index(probeTemplate).match(candidateTemplate);
     return score > 40 ? BioResult.MATCH_SUCCESSFUL : BioResult.MATCH_FAILED;
-  }
-
-  public double getScore() {
-    return score;
   }
 }
