@@ -8,33 +8,40 @@ import kim.nox.bioengine.requests.MainRequest;
 
 class Application {
 
-    private MainRequest mainRequest;
+  private MainRequest mainRequest;
 
-    Application(String[] args) {
-        try {
-            mainRequest = new MainRequest(args);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            System.exit(-1);
-        }
+  Application(String[] args) {
+    try {
+      mainRequest = new MainRequest(args);
+    } catch (IllegalArgumentException e) {
+      System.out.println(e.getMessage());
+      System.exit(-1);
     }
+  }
 
-    void bootstrap() {
-        Singleton singleton = Singleton.getInstance();
-        singleton.server = new Engine().start();
+  void bootstrap() {
+    Singleton singleton = Singleton.getInstance();
+    singleton.server = new Engine().start();
 
-        BioResult result;
+    BioResult result;
 
-        if(mainRequest.getCommand().equals("enroll")) {
-            Enroller enroller = new Enroller(mainRequest.getDocument(), mainRequest.getFingerprintPath(), mainRequest.getPosition());
-            result =  enroller.enrollBioTemplateToDatabase();
-            System.out.println(result);
-        } else if (mainRequest.getCommand().equals("match")) {
-            Matcher matcher = new Matcher();
-            result = matcher.matchAgainstDatabase(mainRequest.getDocument(), mainRequest.getFingerprintPath());
-            System.out.println(result + " " + matcher.getScore());
-        } else {
-            System.out.println("Command not found");
-        }
+    if (mainRequest.getCommand().equals("enroll")) {
+      Enroller enroller = new Enroller(
+              mainRequest.getDocument(),
+              mainRequest.getFingerprintPath(),
+              mainRequest.getPosition()
+      );
+      result =  enroller.enrollBioTemplateToDatabase();
+      System.out.println(result);
+    } else if (mainRequest.getCommand().equals("match")) {
+      Matcher matcher = new Matcher();
+      result = matcher.matchAgainstDatabase(
+              mainRequest.getDocument(),
+              mainRequest.getFingerprintPath()
+      );
+      System.out.println(result + " " + matcher.getScore());
+    } else {
+      System.out.println("Command not found");
     }
+  }
 }

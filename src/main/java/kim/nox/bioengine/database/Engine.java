@@ -9,19 +9,19 @@ import java.sql.Connection;
 
 public class Engine {
 
-    public EbeanServer start() {
+  public EbeanServer start() {
 
-        DataSourceConfig dataSourceConfig = new DataSourceConfig();
-        dataSourceConfig.setDriver("org.sqlite.JDBC");
-        dataSourceConfig.setUrl("jdbc:sqlite:data.db");
-        dataSourceConfig.setUsername("");
-        dataSourceConfig.setPassword("");
-        dataSourceConfig.setIsolationLevel(Connection.TRANSACTION_SERIALIZABLE);
+    DataSourceConfig dataSourceConfig = new DataSourceConfig();
+    dataSourceConfig.setDriver("org.sqlite.JDBC");
+    dataSourceConfig.setUrl("jdbc:sqlite:data.db");
+    dataSourceConfig.setUsername("");
+    dataSourceConfig.setPassword("");
+    dataSourceConfig.setIsolationLevel(Connection.TRANSACTION_SERIALIZABLE);
 
-        ServerConfig config = new ServerConfig();
-        config.setDefaultServer(true);
-        config.setDataSourceConfig(dataSourceConfig);
+    ServerConfig config = new ServerConfig();
+    config.setDefaultServer(true);
+    config.setDataSourceConfig(dataSourceConfig);
 
-        return EbeanServerFactory.create(config);
-    }
+    return EbeanServerFactory.create(config);
+  }
 }

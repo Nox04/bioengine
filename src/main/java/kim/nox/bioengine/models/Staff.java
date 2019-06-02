@@ -9,29 +9,29 @@ import java.util.List;
 @Table(name = "biometric_staff")
 public class Staff extends Base {
 
-    public Staff(String document) {
-        super();
-        this.document = document;
-    }
+  public Staff(String document) {
+    super();
+    this.document = document;
+  }
 
-    private String document;
+  private String document;
 
-    @OneToMany(mappedBy = "staff")
-    List<Fingerprint> fingerprints;
+  @OneToMany(mappedBy = "staff")
+  List<Fingerprint> fingerprints;
 
-    public String getDocument() {
-        return document;
-    }
+  public String getDocument() {
+    return document;
+  }
 
-    public void setDocument(String document) {
-        this.document = document;
-    }
+  public void setDocument(String document) {
+    this.document = document;
+  }
 
-    public List<Fingerprint> getFingerprints() {
-        return fingerprints;
-    }
+  public List<Fingerprint> getFingerprints() {
+    return fingerprints;
+  }
 
-    public void setFingerprints(List<Fingerprint> fingerprints) {
-        this.fingerprints = fingerprints;
-    }
+  public void setFingerprints(List<Fingerprint> fingerprints) {
+    this.fingerprints = fingerprints;
+  }
 }

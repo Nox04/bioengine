@@ -8,41 +8,41 @@ import javax.persistence.Table;
 @Table(name = "biometric_fingerprints")
 public class Fingerprint extends Base {
 
-    public Fingerprint(String template, Staff staff, String position) {
-        super();
-        this.template = template;
-        this.staff = staff;
-        this.position = position;
-    }
+  public Fingerprint(String template, Staff staff, String position) {
+    super();
+    this.template = template;
+    this.staff = staff;
+    this.position = position;
+  }
 
-    private String template;
+  private String template;
 
-    private String position;
+  private String position;
 
-    @ManyToOne(optional=false)
-    private Staff staff;
+  @ManyToOne(optional = false)
+  private Staff staff;
 
-    public String getTemplate() {
-        return template;
-    }
+  public String getTemplate() {
+    return template;
+  }
 
-    public void setTemplate(String template) {
-        this.template = template;
-    }
+  public void setTemplate(String template) {
+    this.template = template;
+  }
 
-    public Staff getStaff() {
-        return staff;
-    }
+  public Staff getStaff() {
+    return staff;
+  }
 
-    public void setStaff(Staff staff) {
-        this.staff = staff;
-    }
+  public void setStaff(Staff staff) {
+    this.staff = staff;
+  }
 
-    public String getPosition() {
-        return position;
-    }
+  public String getPosition() {
+    return position;
+  }
 
-    public void setPosition(String position) {
-        this.position = position;
-    }
+  public void setPosition(String position) {
+    this.position = position;
+  }
 }
