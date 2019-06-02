@@ -39,6 +39,18 @@ dependencies {
     compile group: 'org.xerial', name: 'sqlite-jdbc', version: '3.27.2.1'
 }
 
+jar {
+    manifest {
+        attributes 'Main-Class': 'kim.nox.bioengine.Main'
+    }
+    from {
+        compileJava.classpath.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+    exclude 'META-INF/*.RSA', 'META-INF/*.SF', 'META-INF/*.DSA'
+}
+
 compileKotlin {
     kotlinOptions.jvmTarget = "1.8"
 }
