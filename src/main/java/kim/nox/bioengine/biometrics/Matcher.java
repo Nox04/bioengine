@@ -3,11 +3,12 @@ package kim.nox.bioengine.biometrics;
 import com.machinezoo.sourceafis.FingerprintMatcher;
 import com.machinezoo.sourceafis.FingerprintTemplate;
 import io.ebean.Ebean;
-import java.io.IOException;
 import kim.nox.bioengine.io.Utils;
 import kim.nox.bioengine.logs.ActivityLogger;
 import kim.nox.bioengine.models.Fingerprint;
 import kim.nox.bioengine.models.Staff;
+
+import java.io.IOException;
 
 public class Matcher {
 
