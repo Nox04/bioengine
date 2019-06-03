@@ -24,6 +24,7 @@ public class Engine {
     ServerConfig config = new ServerConfig();
     config.setDefaultServer(true);
     config.setDataSourceConfig(dataSourceConfig);
+    config.addPackage("kim.nox.bioengine.models");
 
     return EbeanServerFactory.create(config);
   }
